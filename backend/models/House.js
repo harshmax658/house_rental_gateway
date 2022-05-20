@@ -3,35 +3,28 @@ const mongoose = require("mongoose");
 // const multer = require("multer");
 // const path = require("path");
 // const Avatar_path = path.join("/uploads/user/avatar");
+const multer = require("multer");
+const path = require("path");
+const HOUSE_PATH = path.join("/uploads/house");
 
 const userSchema = mongoose.Schema(
   {
-    email: {
-      type: String,
-      required: true,
-      max: 50,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
-      select: false,
-      min: 3,
-    },
-    fullName: {
+    desc: {
       type: String,
       required: true,
     },
-    role: {
+    owner: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+    },
+    price: {
       type: String,
       required: true,
     },
-    uploadHouses: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Post",
-      },
-    ],
+    image: {
+      type: String,
+      default: null,
+    },
   },
   { timestamps: true }
 );
@@ -51,6 +44,22 @@ const userSchema = mongoose.Schema(
 
 // userSchema.statics.uploadAvatar = multer({ storage: storage }).single("avatar");
 // userSchema.statics.avatarPath = Avatar_path;
+
+const storage = multer.diskStorage({
+  destination: function (request, file, cb) {
+    cb(null, path.join(__dirname, "..", POST_PATH));
+  },
+  filename: function (request, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + path.extname(file.originalname);
+    cb(null, file.fieldname + "-" + uniqueSuffix);
+  },
+});
+
+// static Methods
+postSchema.statics.uploadPostImage = multer({ storage: storage }).single(
+  "image"
+);
+postSchema.statics.HouseImgPath = HOUSE_PATH;
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
