@@ -1,4 +1,5 @@
 
+
 import './App.css';
 import Header from './components/header/Header';
 function App() {
@@ -7,6 +8,6 @@ function App() {
                 <Header />       
             </div>
   );
-}
 
+  }
 export default App;
