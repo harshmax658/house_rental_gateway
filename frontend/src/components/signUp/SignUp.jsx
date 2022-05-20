@@ -80,6 +80,27 @@ const SignUp = () => {
           onChange={onChangeHandler}
           required
         />
+        <>
+          <p>Please select your role:</p>
+          <input
+            type="radio"
+            id="age1"
+            name="role"
+            value="client"
+            onChange={onChangeHandler}
+          />
+          <label htmlFor="role">Client</label>
+          <br />
+          <input
+            type="radio"
+            id="age2"
+            name="role"
+            value="owner"
+            onChange={onChangeHandler}
+          />
+          <label htmlFor="role">Owner</label>
+          <br />
+        </>
         <CustomButton type="submit">Sign up</CustomButton>
       </form>
     </SignUpStyle>

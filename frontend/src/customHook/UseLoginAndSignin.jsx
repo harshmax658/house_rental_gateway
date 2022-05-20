@@ -10,6 +10,7 @@ const UseLoginAndSignin = (props) => {
     email: "",
     password: "",
     confirmPassword: "",
+    role: "",
   });
   if (props === "login") {
     const onChangeHandler = (e) => {
