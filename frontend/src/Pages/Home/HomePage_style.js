@@ -31,7 +31,7 @@ export const P = styled.p`
   margin: 15px 0;
 `;
 export const PostImage = styled.div`
-  background: url("images/houseHome.jpg") center center/cover;
+  background: url("images/houseHome3.jpg") center center/cover;
   background-size: cover;
   width: "100%";
   z-index: -1;
